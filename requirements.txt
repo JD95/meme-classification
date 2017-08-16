@@ -1,1 +1,2 @@
 ImageHash==3.4
+pytesseract=0.1.7

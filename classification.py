@@ -10,7 +10,7 @@ import os
 import imagehash
 from PIL import Image
 from typing import List
-
+from pytesseract import image_to_string
 
 def safe_cast(val, to_type, default=None):
     """A helper for safe casts between types"""
@@ -18,7 +18,6 @@ def safe_cast(val, to_type, default=None):
         return to_type(val)
     except (ValueError, TypeError):
         return default
-
 
 def existing_hashes(root_dir: str) -> List[int]:
     """Collects hashes from folder names in root directory"""
@@ -47,3 +46,9 @@ def hamdist(str1: str, str2: str) -> int:
         if ch1 != ch2:
             diffs += 1
     return diffs
+
+def get_image_text(filepath: str) -> str:
+    """Given a path to a file, extract the text"""
+    tessdata_dir_config = '--tessdata-dir "C:\\Users\\jeffr\\AppData\\Local\\Tesseract-OCR\\tessdata"'
+    img = Image.open(filepath)
+    return image_to_string(img, lang='eng', config=tessdata_dir_config)
