@@ -9,3 +9,5 @@ The learning model for classifying new memes based on their text has yet to be d
 # contributing
 
 This will be more refined when a solid set of requirements has been figured out.
+
+See issues for contribution ideas.
